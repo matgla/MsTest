@@ -35,7 +35,7 @@ namespace mstest
 
 int run_tests()
 {
-    printf ("Executing tests\n");
+    printf ("%s<---    Executing tests    --->%s\n", detail::color::blue, detail::color::reset);
     int passed_tests = 0;
     int executed_tests = 0;
     int return_code = 0;
@@ -47,19 +47,19 @@ int run_tests()
         if (std::string_view(suite) != std::string_view(test.suite()))
         {
             suite = test.suite();
-            printf("%sSuite: %s%s\n", detail::color::blue, suite, detail::color::reset);
+            printf("%s -> Suite: %s%s\n", detail::color::blue, suite, detail::color::reset);
         }
         mstest::detail::TestList::get().current_test(test.test());
         if(!test.execute())
         {
             ++return_code;
 
-            printf("%s x  %-50s %s\n", detail::color::red, test.testcase(), detail::color::reset);
+            printf("%s  x  %-50s %s\n", detail::color::red, test.testcase(), detail::color::reset);
         }
         else
         {
             ++passed_tests;
-            printf("%s %s  %-50s %s\n", detail::color::green, detail::symbols::check_mark, test.testcase(), detail::color::reset);
+            printf("%s  %s  %-50s %s\n", detail::color::green, detail::symbols::check_mark, test.testcase(), detail::color::reset);
 
         }
         ++executed_tests;
