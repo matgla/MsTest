@@ -99,6 +99,7 @@ public:
             return true;
         }
         self.last_->next(next);
+        self.last_ = next;
         return true;
     }
 

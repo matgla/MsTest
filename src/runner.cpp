@@ -54,12 +54,12 @@ int run_tests()
         {
             ++return_code;
 
-            printf("%s -> %-50s  x %s\n", detail::color::red, test.testcase(), detail::color::reset);
+            printf("%s x  %-50s %s\n", detail::color::red, test.testcase(), detail::color::reset);
         }
         else
         {
             ++passed_tests;
-            printf("%s -> %-50s  %s %s\n", detail::color::green, test.testcase(), detail::symbols::check_mark, detail::color::reset);
+            printf("%s %s  %-50s %s\n", detail::color::green, detail::symbols::check_mark, test.testcase(), detail::color::reset);
 
         }
         ++executed_tests;

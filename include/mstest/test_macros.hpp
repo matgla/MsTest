@@ -37,3 +37,13 @@
     static mstest::detail::TestCaseNode __mstest_test_case_node_##fixture##_##testcase(&__mstest_##fixture##_##testcase##_instance, #fixture, #testcase); \
     static volatile bool __mstest_test_case_node_##fixture##_##testcase##_ = mstest::detail::TestList::register_test(&__mstest_test_case_node_##fixture##_##testcase); \
     void __mstest_##fixture##_##testcase::execute()
+
+#define MSTEST_F(fixture, testcase) \
+    class __mstest_##fixture##_##testcase : public fixture \
+    { \
+        void execute() override;\
+    }; \
+    static __mstest_##fixture##_##testcase __mstest_##fixture##_##testcase##_instance; \
+    static mstest::detail::TestCaseNode __mstest_test_case_node_##fixture##_##testcase(&__mstest_##fixture##_##testcase##_instance, #fixture, #testcase); \
+    static volatile bool __mstest_test_case_node_##fixture##_##testcase##_ = mstest::detail::TestList::register_test(&__mstest_test_case_node_##fixture##_##testcase); \
+    void __mstest_##fixture##_##testcase::execute()
