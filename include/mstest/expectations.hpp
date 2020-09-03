@@ -91,7 +91,7 @@ void expect_true(T x, const std::source_location& location = std::source_locatio
 template <class T>
 constexpr void expect_false(const T& x, const std::source_location& location = std::source_location::current())
 {
-    if (!generic_matcher(x, location))
+    if (!generic_matcher(!x, location))
     {
         printf("    %sAssertion failed:%s expect_false(x), where x = %s\n", detail::color::red, detail::color::reset, std::to_string(x).c_str());
     }
