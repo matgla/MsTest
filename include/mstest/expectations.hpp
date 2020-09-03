@@ -44,9 +44,19 @@ namespace std
     }
     // TODO: change to custom printers
     template <typename T>
-    std::string to_string(T* x)
+    inline std::string to_string(T* x)
     {
         return std::string("0x") + n2hexstr(reinterpret_cast<std::size_t>(x));
+    }
+
+    inline std::string to_string(std::string_view x)
+    {
+        return std::string(x);
+    }
+
+    inline std::string to_string(const char* str)
+    {
+        return std::string(str);
     }
 } // namespace std
 
